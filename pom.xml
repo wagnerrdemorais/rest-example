@@ -45,6 +45,38 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/docker/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/target/</directory>
+									<filtering>false</filtering>
+									<excludes>
+										<exclude>**/generated-resources/</exclude>
+										<exclude>**/classes/</exclude>
+										<exclude>**/generated-test-resources/</exclude>
+										<exclude>**/maven-archiver/</exclude>
+										<exclude>**/maven-status/</exclude>
+										<exclude>**/test-classes/</exclude>
+										<exclude>**/*.original</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
