@@ -18,4 +18,6 @@ public interface PlanetRepository extends JpaRepository<Planet, Long> {
 
         return planet;
     }
+
+    Planet findByName(String name);
 }

@@ -12,4 +12,8 @@ public class PlanetService {
         return PlanetRepository.findPlanet(name);
     }
 
+//    public Planet findPlanetByName(String name){
+//        return PlanetRepository.findPlanet(name);
+//    }
+
 }

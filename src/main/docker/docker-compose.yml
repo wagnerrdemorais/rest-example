@@ -8,8 +8,6 @@ services:
     container_name: app
     ports:
       - "8080:8080"
-    expose:
-      - "8080"
     depends_on:
       - db
     environment:
@@ -20,7 +18,11 @@ services:
 
   db:
     image: 'postgres:13.1-alpine'
+    ports:
+      - "5432:5432"
     container_name: db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./postgresql:/var/lib/postgresql
